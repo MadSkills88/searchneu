@@ -51,7 +51,7 @@ class MobileSectionPanel extends React.Component {
 		    <tbody>
 		      <tr className={css.firstRow}>
 			    <td className={css.firstColumn}>CRN</td>
-			    <td className = {css.secondColumn}>{this.props.section.crn}</td> 
+			    <td className = {css.secondColumn + ' ' + css.crn}>{this.props.section.crn}</td> 
 			  </tr>
 		      <tr>
 			    <td className={css.firstColumn}>Profs</td>

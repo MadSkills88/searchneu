@@ -5,6 +5,8 @@
 	
 	/*line-height: 1.8em;*/
 	/*line-height: .7em;*/
+	position: relative;
+    padding-top: 5px;
 }
 
 
@@ -17,6 +19,7 @@
 
 .crn {
 	font-weight: bold;
+	/*padding-top: 10px;*/
 }
 .table {
 	width: 100%;
@@ -24,8 +27,11 @@
 }
 
 .globe {
-	float: right;
-	padding: 8px;
+	/*float: right;*/
+	/*padding: 8px;*/
+	position: absolute;
+	top: 6px;
+	right: 6px;
 }
 
 /*.table td {*/
@@ -63,12 +69,12 @@
 	vertical-align: bottom;
 }
 .lastRow {
-	height: 50px;
+	height: 34px;
 	vertical-align: top;
 	border-bottom: none !important;
 }
 .title {
-	/*display: none;*/
+	display: none;
 	font-weight: bold;
 	color: #666;
 	font-size: 20px;
