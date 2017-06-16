@@ -84,7 +84,7 @@ class MobileSectionPanel extends React.Component {
 		      <tr className={css.lastRow}>
 			    <td className={css.firstColumn}>Seats</td>
 			    <td className = {css.secondColumn}>
-			    	 0/19 Avalible
+			    	 0/19 Seats Avalible
 		    	</td> 
 			  </tr>
 		  </tbody>

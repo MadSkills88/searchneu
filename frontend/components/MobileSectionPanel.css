@@ -3,7 +3,8 @@
 	border-top: 1px solid rgba(34, 36, 38, .15);
 	/*border-bottom: 1px solid rgba(34,36,38,.15);*/
 	
-	line-height: 1.8em;
+	/*line-height: 1.8em;*/
+	/*line-height: .7em;*/
 }
 
 
@@ -19,6 +20,7 @@
 }
 .table {
 	width: 100%;
+    line-height: 13px;
 }
 
 .globe {
@@ -41,10 +43,11 @@
 	/*border: 1px solid rgba(34,36,38,.15); */
 }
 .firstColumn {
+	display: none;
 	padding: 2px;
 	padding-right: 2px;
 	color: #999;
-	border-right: 1px solid rgba(34, 36, 38, .03);
+	/*border-right: 1px solid rgba(34, 36, 38, .03);*/
 	max-width: 32px;
 }
 .secondColumn {
@@ -52,11 +55,11 @@
 	padding: 5px;
 }
 .container tr {
-	border-bottom: 1px solid rgba(34, 36, 38, .03);
+	/*border-bottom: 1px solid rgba(34, 36, 38, .03);*/
 }
 .firstRow {
 	/*height: 50px;*/
-	border-top: 1px solid rgba(34, 36, 38, .03);
+	/*border-top: 1px solid rgba(34, 36, 38, .03);*/
 	vertical-align: bottom;
 }
 .lastRow {
@@ -65,9 +68,11 @@
 	border-bottom: none !important;
 }
 .title {
+	/*display: none;*/
 	font-weight: bold;
 	color: #666;
 	font-size: 20px;
 	padding-top: 20px;
 	padding-bottom: 3px;
+	padding-left: 4px;
 }
