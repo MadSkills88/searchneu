@@ -36,8 +36,7 @@ class Home extends React.Component {
       waitingOnEnter: false,
 
       // Keeps track of whether to show the results or the splash screen.
-      // Is the same as this.state.searchTerm.length === 0 most of the time, but when the search results are deleted,
-      // they animate away instead of switching instantly. 
+      // Once the user has typed somethig in, the results are shown until the user clicked the logo in the corner or navigates back to the home page.
       showSearchResults: false,
     };
 
@@ -155,7 +154,12 @@ class Home extends React.Component {
       this.inputElement.value = ''
     }
 
-    this.search('');
+    this.onSearchDebounced('');
+
+    this.setState({
+      showSearchResults: false,
+      results: []
+    })
   }
 
   // On mobile, this is called whenever the user clicks enter.
@@ -185,6 +189,10 @@ class Home extends React.Component {
       macros.error("Could not change URL?", e)
     }
     this.logSearch(searchTerm);
+
+    this.setState({
+      showSearchResults: true
+    })
   }
 
 
@@ -217,6 +225,7 @@ class Home extends React.Component {
   }
 
   async search(searchTerm, termCount = 5) {
+    searchTerm = searchTerm.trim()
     this.currentQuery = searchTerm;
 
     const results = await search.search(searchTerm, termCount);
@@ -230,7 +239,6 @@ class Home extends React.Component {
 
 
     let newState = {
-      showSearchResults: true,
       searchTerm: searchTerm,
       waitingOnEnter: false,
     }
@@ -246,10 +254,9 @@ class Home extends React.Component {
     // Hide the results after some delay
     if (searchTerm.length === 0) {
       this.hideSearchResultsTimeout = setTimeout(() => {
-        this.setState({
-          results: [],
-          showSearchResults: false
-        })
+        // this.setState({
+        //   results: []
+        // })
       }, 2000);
     }
 
@@ -355,12 +362,22 @@ class Home extends React.Component {
     let topHeaderStyle = {}
     let resultsContainerStyle = {}
 
+    let desktopClass = '';
+
     // Don't animate anything on mobile. 
     // and set the second state of the animations if there is something in the text box. 
-    if (!macros.isMobile && this.state.searchTerm.length !== 0) {
-      topHeaderStyle.transform = 'translateY(calc(-50% + 230px))'
-      resultsContainerStyle.transform = 'translateY(-' + (window.innerHeight - 305) + 'px)'
-      bostonContainerStyle.opacity = 0;
+    if (!macros.isMobile) {
+
+      if (this.state.showSearchResults) {
+        desktopClass = css.desktopSearchResultsShowing;
+        topHeaderStyle.transform = 'translateY(calc(-50% + 230px))'
+        resultsContainerStyle.transform = 'translateY(-' + (window.innerHeight - 305) + 'px)'
+        bostonContainerStyle.opacity = 0;
+      }
+      else {
+        desktopClass = css.desktopSearchResultsHidden;
+      }
+
     }
 
     // On mobile only show the logo and the github corner if there are no results and the search box is not focused (the virtual keyboard is not on the screen).
@@ -378,7 +395,7 @@ class Home extends React.Component {
     // Not totally sure why, but this height: 100% removes the extra whitespace at the bottom of the page caused by the upward translate animation.
     // Actually it only removes the extra whitespace on chrome. Need to come up with a better solution for other browsers.  
     return (
-      <div className={mobileClassType} style={{height:'100%'}}>
+      <div className={mobileClassType + ' ' + desktopClass} style={{height:'100%'}}>
 
         <a  target='_blank' rel='noopener noreferrer' href='https://github.com/ryanhugh/searchneu' className={css.githubCornerContainer}>
           {/* eslint-disable max-len */}

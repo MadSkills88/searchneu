@@ -72,6 +72,10 @@
     text-align: left;
 }
 
+.desktopSearchResultsShowing {
+
+}
+
 /* Desktop. */
 @media only screen and (min-width: 767px) {
     .searchWrapper {
@@ -79,13 +83,13 @@
         width: 782px;
     }
 
-    .bostonContainer {
-        transition-delay: 1s !important;
+    .desktopSearchResultsShowing .bostonContainer {
+        /*transition-delay: 1s !important;*/
         transition: opacity 1s;
     }
 }
 
-/* MObile. */
+/* Mobile. */
 @media only screen and (max-width: 767px) {
     .searchWrapper {
         width: 95% !important;
@@ -143,13 +147,14 @@
 @media only screen and (min-width: 767px) {
     .topHeader {
         padding: 3em 0 !important;
-        transition-delay: 1s !important;
-        transition: transform .75s;
-        transition: 1s;
     }
-    .resultsContainer {
-        transition: transform .75s;
-        transition-delay: 1s !important;
+    .desktopSearchResultsShowing .topHeader {
+        /*transition-delay: 1s !important;*/
+        transition: transform .65s;
+    }
+    .desktopSearchResultsShowing .resultsContainer {
+        transition: transform .65s;
+        /*transition-delay: 1s !important;*/
     }
     .title {
         font-size: 54px;
